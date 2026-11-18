@@ -10,6 +10,7 @@ import Contact from './components/Contact'
 import Preloader from './components/Preloader'
 import NotFound from './components/NotFound'
 import Resume from './components/Resume'
+import Footer from './components/Footer'
 
 function App() {
 const pathname = window.location.pathname.replace(/\/+$/, '') || '/'
@@ -34,11 +35,12 @@ const pathname = window.location.pathname.replace(/\/+$/, '') || '/'
       <Projects />
       <Education />
       <Contact />
+      <Footer />
 
-      <footer className="flex flex-col justify-between gap-4 border-t border-white/10 px-6 py-8 text-sm text-gray-500 md:px-16 sm:flex-row">
+      {/* <footer className="flex flex-col justify-between gap-4 border-t border-white/10 px-6 py-8 text-sm text-gray-500 md:px-16 sm:flex-row">
         <p>© 2026 Akshay Muthyala. All rights reserved.</p>
         <p>Designed & Built with React, Tailwind CSS and GSAP.</p>
-      </footer>
+      </footer> */}
     </main>
   )
 }

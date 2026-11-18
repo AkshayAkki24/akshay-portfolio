@@ -32,27 +32,51 @@ function Navbar() {
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [])
 
-  // Highlight the current section
-  useEffect(() => {
-    const sections = document.querySelectorAll('section[id]')
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id)
-          }
-        })
-      },
-      {
-        rootMargin: '-30% 0px -60% 0px',
-      },
-    )
+// Highlight the section closest to the top navigation area
+useEffect(() => {
+  const updateActiveSection = () => {
+    const sections = document.querySelectorAll<HTMLElement>('section[id]')
 
-    sections.forEach((section) => observer.observe(section))
+    const activationPoint = 140
+    let currentSection = ''
 
-    return () => observer.disconnect()
-  }, [])
+    sections.forEach((section) => {
+      const sectionTop = section.getBoundingClientRect().top
+
+      if (sectionTop <= activationPoint) {
+        currentSection = section.id
+      }
+    })
+
+    // At the bottom of the page, always highlight Contact.
+    const isAtBottom =
+      window.innerHeight + window.scrollY >=
+      document.documentElement.scrollHeight - 5
+
+    if (isAtBottom) {
+      currentSection = 'contact'
+    }
+
+    if (currentSection) {
+      setActiveSection(currentSection)
+    }
+  }
+
+  updateActiveSection()
+
+  window.addEventListener('scroll', updateActiveSection, {
+    passive: true,
+  })
+
+  window.addEventListener('resize', updateActiveSection)
+
+  return () => {
+    window.removeEventListener('scroll', updateActiveSection)
+    window.removeEventListener('resize', updateActiveSection)
+  }
+}, [])
+
 
   return (
     <header className="fixed left-0 top-0 z-50 w-full border-b border-white/[0.08] bg-[#080808]/80 shadow-lg shadow-black/10 backdrop-blur-2xl">
@@ -82,6 +106,7 @@ function Navbar() {
               <a
                 key={link.name}
                 href={link.href}
+                onClick={() => setActiveSection(section)}
                 className={`relative py-2 text-sm transition-colors duration-300 ${
                   isActive
                     ? 'text-cyan-400'

@@ -1,11 +1,33 @@
 
+import {
+  Code2,
+  Database,
+  Layers3,
+  BriefcaseBusiness,
+} from 'lucide-react'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 
 const highlights = [
-  { value: '5+', label: 'Years Experience' },
-  { value: 'Java', label: 'Backend Development' },
-  { value: 'React', label: 'Frontend Development' },
-  { value: 'Full Stack', label: 'End-to-End Solutions' },
+  {
+    value: '5+',
+    label: 'Years of Professional Experience',
+    icon: BriefcaseBusiness,
+  },
+  {
+    value: 'Java',
+    label: 'Backend Engineering & APIs',
+    icon: Code2,
+  },
+  {
+    value: 'React',
+    label: 'Frontend Development',
+    icon: Layers3,
+  },
+  {
+    value: 'SQL',
+    label: 'Database Design & Queries',
+    icon: Database,
+  },
 ]
 
 function About() {
@@ -30,56 +52,83 @@ function About() {
             {/* Left Content */}
             <div>
               <h2 className="max-w-xl text-4xl font-bold leading-[1.12] tracking-tight sm:text-5xl lg:text-6xl">
-                Engineering ideas
+                Building technology
                 <span className="text-gray-500">
-                  {' '}into reality.
+                  {' '}that solves real problems.
                 </span>
               </h2>
+
+              <p className="mt-6 max-w-md text-sm leading-7 text-gray-500 sm:text-base sm:leading-8">
+                From backend architecture to user-facing applications,
+                I enjoy building reliable solutions that make a
+                meaningful difference.
+              </p>
             </div>
 
             {/* Right Content */}
             <div className="max-w-2xl">
               <p className="text-sm leading-7 text-gray-400 sm:text-base sm:leading-8">
-                I'm Akshay, a Java Full Stack Developer with 5+ years
-                of experience building enterprise healthcare and
-                insurance applications.
+                I'm a Java Full Stack Developer with 5+ years of
+                professional experience developing and supporting
+                enterprise healthcare and insurance applications.
+                Currently, I work at AMPS Healthcare, contributing
+                to applications that support healthcare data
+                processing and payment integrity.
               </p>
 
               <p className="mt-5 text-sm leading-7 text-gray-400 sm:text-base sm:leading-8">
-                My experience includes Java, Spring Boot, Microservices,
-                React and PostgreSQL. I work across backend services,
-                responsive interfaces, data processing and API development.
+                My core expertise includes Java 25, Spring Boot,
+                microservices, REST APIs, Spring Security and
+                PostgreSQL. On the frontend, I develop responsive
+                application modules using React.js, JavaScript,
+                HTML and CSS.
               </p>
 
               <p className="mt-5 text-sm leading-7 text-gray-400 sm:text-base sm:leading-8">
-                I'm passionate about clean code, solving complex
-                engineering problems, continuous learning and turning
-                business requirements into meaningful technology solutions.
+                I've worked across data ingestion pipelines,
+                Stage-Delta-Target processing, policy management,
+                claim workflows, web crawlers and enterprise
+                integrations. I also contribute to code quality,
+                debugging, production support and Agile delivery.
+              </p>
+
+              <p className="mt-5 text-sm leading-7 text-gray-400 sm:text-base sm:leading-8">
+                I enjoy solving complex problems, writing maintainable
+                code and continuously improving my engineering skills
+                while exploring modern technologies.
               </p>
             </div>
           </div>
         </div>
 
-        {/* Experience Highlights */}
+        {/* Professional Highlights */}
         <div className="reveal mt-14 grid grid-cols-2 gap-4 sm:mt-20 sm:gap-6 lg:grid-cols-4">
-          {highlights.map((item, index) => (
-            <div
-              key={item.label}
-              className="group relative overflow-hidden rounded-xl border border-white/10 bg-white/[0.02] p-4 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/30 hover:bg-white/[0.04] sm:p-6"
-            >
-              <span className="absolute right-4 top-4 text-xs text-gray-700 transition-colors group-hover:text-cyan-400/60">
-                0{index + 1}
-              </span>
+          {highlights.map((item, index) => {
+            const Icon = item.icon
 
-              <h3 className="break-words text-2xl font-bold tracking-tight text-cyan-400 sm:text-3xl md:text-4xl">
-                {item.value}
-              </h3>
+            return (
+              <div
+                key={item.label}
+                className="group relative overflow-hidden rounded-xl border border-white/10 bg-white/[0.02] p-4 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/30 hover:bg-white/[0.04] sm:p-6"
+              >
+                <span className="absolute right-4 top-4 text-xs text-gray-700 transition-colors group-hover:text-cyan-400/60">
+                  0{index + 1}
+                </span>
 
-              <p className="mt-3 text-xs leading-5 text-gray-500 sm:text-sm sm:leading-6">
-                {item.label}
-              </p>
-            </div>
-          ))}
+                <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-lg bg-cyan-400/10 text-cyan-400">
+                  <Icon size={20} />
+                </div>
+
+                <h3 className="break-words text-2xl font-bold tracking-tight text-cyan-400 sm:text-3xl md:text-4xl">
+                  {item.value}
+                </h3>
+
+                <p className="mt-3 text-xs leading-5 text-gray-500 sm:text-sm sm:leading-6">
+                  {item.label}
+                </p>
+              </div>
+            )
+          })}
         </div>
 
       </div>

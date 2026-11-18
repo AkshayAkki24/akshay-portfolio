@@ -4,6 +4,8 @@ import {
   Award,
   BookOpen,
   Sparkles,
+  MapPin,
+  Trophy,
 } from 'lucide-react'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 
@@ -35,10 +37,10 @@ function Education() {
           </p>
         </div>
 
-        {/* Education & Recognition Cards */}
+        {/* Education & Recognition */}
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:gap-6">
 
-          {/* Education */}
+          {/* Education Card */}
           <article className="reveal group rounded-2xl border border-white/10 bg-white/[0.02] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/30 hover:bg-white/[0.04] sm:p-7 lg:p-8">
 
             <div className="mb-8 flex items-start justify-between sm:mb-10">
@@ -51,26 +53,35 @@ function Education() {
               </span>
             </div>
 
+            <p className="mb-3 text-xs uppercase tracking-wider text-cyan-400">
+              Postgraduate Degree
+            </p>
+
             <h3 className="mb-3 text-xl font-semibold leading-snug transition-colors group-hover:text-cyan-400 sm:text-2xl">
               Master of Computer Applications
             </h3>
 
-            <p className="mb-8 text-sm leading-7 text-gray-400 sm:text-base">
+            <p className="mb-5 text-sm leading-7 text-gray-400 sm:text-base">
               University College of Science, Saifabad
             </p>
+
+            <div className="mb-5 flex items-center gap-2 text-xs text-gray-500 sm:text-sm">
+              <MapPin size={16} className="text-cyan-400" />
+              Hyderabad, India
+            </div>
 
             <div className="flex flex-wrap items-center justify-between gap-3 border-t border-white/10 pt-5">
               <span className="text-xs text-gray-500 sm:text-sm">
                 Academic Performance
               </span>
 
-              <span className="font-semibold text-cyan-400">
-                CGPA 7.8
+              <span className="text-lg font-bold text-cyan-400">
+                7.8 CGPA
               </span>
             </div>
           </article>
 
-          {/* Recognition */}
+          {/* Recognition Card */}
           <article className="reveal group rounded-2xl border border-white/10 bg-white/[0.02] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/30 hover:bg-white/[0.04] sm:p-7 lg:p-8">
 
             <div className="mb-8 flex items-start justify-between sm:mb-10">
@@ -79,18 +90,27 @@ function Education() {
               </div>
 
               <span className="rounded-full border border-white/10 px-3 py-1.5 text-[10px] uppercase tracking-widest text-gray-500 sm:text-xs">
-                Recognition
+                Achievement
               </span>
             </div>
+
+            <p className="mb-3 text-xs uppercase tracking-wider text-cyan-400">
+              Professional Recognition
+            </p>
 
             <h3 className="mb-3 text-xl font-semibold leading-snug transition-colors group-hover:text-cyan-400 sm:text-2xl">
               Employee of the Month
             </h3>
 
-            <p className="mb-8 text-sm leading-7 text-gray-400 sm:text-base">
+            <p className="mb-5 text-sm leading-7 text-gray-400 sm:text-base">
               Recognized for timely delivery of sprint commitments
-              and contribution to project goals.
+              and contributions toward project goals.
             </p>
+
+            <div className="mb-5 flex items-center gap-2 text-xs text-gray-500 sm:text-sm">
+              <Trophy size={16} className="text-cyan-400" />
+              AMPS Healthcare
+            </div>
 
             <div className="flex flex-wrap items-center justify-between gap-3 border-t border-white/10 pt-5">
               <span className="text-xs text-gray-500 sm:text-sm">
@@ -119,13 +139,25 @@ function Education() {
                   Professional Learning
                 </p>
 
-                <h3 className="mb-2 text-lg font-semibold leading-snug transition-colors group-hover:text-cyan-400 sm:text-xl md:text-2xl">
+                <h3 className="mb-3 text-lg font-semibold leading-snug transition-colors group-hover:text-cyan-400 sm:text-xl md:text-2xl">
                   Master Spring Boot 3 and Spring Framework 6 with Java
                 </h3>
 
                 <p className="text-sm leading-7 text-gray-400">
-                  Completed professional development course through Udemy.
+                  Completed a professional development course through Udemy,
+                  strengthening knowledge of Spring Boot and the Spring ecosystem.
                 </p>
+
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {['Spring Boot 3', 'Spring Framework 6', 'Java'].map((skill) => (
+                    <span
+                      key={skill}
+                      className="rounded-full border border-white/10 px-3 py-1.5 text-xs text-gray-400"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
 
